@@ -1,0 +1,399 @@
+/* ============================================================
+   Responsive — compact sidebar (tablet) → drawer + bottom nav (mobile)
+   Desktop:   >= 1181px  full sidebar
+   Tablet:    1024–1180px compact icon rail
+   Mobile:    <= 1023px  off-canvas drawer + bottom tab bar
+   ============================================================ */
+
+/* ---------- Tablet: compact icon rail ---------- */
+
+@media (max-width: 1180px) and (min-width: 1024px) {
+  .qf-sidebar {
+    width: var(--qf-sidebar-w-compact);
+    align-items: center;
+  }
+
+  .qf-sidebar__brand {
+    justify-content: center;
+    padding: 0;
+  }
+
+  .qf-brand__text,
+  .qf-nav-label,
+  .qf-user__info,
+  .qf-logout span {
+    display: none;
+  }
+
+  .qf-sidebar__nav {
+    width: 100%;
+    padding: 18px 10px;
+  }
+
+  .qf-nav__item {
+    justify-content: center;
+    padding: 0;
+  }
+
+  .qf-nav__item--active::before {
+    left: -10px;
+  }
+
+  .qf-nav__count {
+    position: absolute;
+    top: 4px;
+    right: 8px;
+    margin-left: 0;
+    padding: 0 5px;
+    font-size: 0.5625rem;
+  }
+
+  .qf-sidebar__foot {
+    width: 100%;
+  }
+
+  .qf-user {
+    justify-content: center;
+    padding: 9px 0;
+  }
+
+  .qf-logout {
+    justify-content: center;
+    padding: 0;
+  }
+
+  .qf-main {
+    margin-left: var(--qf-sidebar-w-compact);
+  }
+
+  .qf-stats {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .qf-pipeline {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px 14px;
+  }
+
+  .qf-content {
+    padding: 24px 24px 44px;
+  }
+
+  .qf-header {
+    padding: 0 24px;
+  }
+}
+
+/* ---------- Mobile ---------- */
+
+@media (max-width: 1023px) {
+  .qf-sidebar {
+    width: min(280px, 82vw);
+    transform: translateX(-100%);
+    box-shadow: none;
+  }
+
+  .qf-sidebar--open {
+    transform: translateX(0);
+    box-shadow: var(--qf-shadow-lg);
+  }
+
+  .qf-main {
+    margin-left: 0;
+    padding-bottom: 72px;
+  }
+
+  .qf-header {
+    padding: 0 16px;
+    gap: 12px;
+  }
+
+  .qf-header__burger {
+    display: inline-flex;
+  }
+
+  .qf-header__search {
+    display: none;
+  }
+
+  .qf-header h1 {
+    font-size: 1.25rem;
+  }
+
+  .qf-header__sub {
+    font-size: 0.75rem;
+  }
+
+  .qf-content {
+    padding: 20px 16px 32px;
+  }
+
+  .qf-page-head {
+    margin-bottom: 18px;
+  }
+
+  .qf-page-head__actions {
+    width: 100%;
+  }
+
+  .qf-page-head__actions .qf-btn {
+    flex: 1;
+  }
+
+  /* Stats: 2-up */
+  .qf-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+
+  .qf-stat {
+    padding: 15px 15px 14px;
+    gap: 10px;
+  }
+
+  .qf-stat__value {
+    font-size: 1.5rem;
+  }
+
+  .qf-stat__label {
+    font-size: 0.6875rem;
+  }
+
+  /* Dashboard rows collapse to one column */
+  .qf-dash-row--split {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  /* Pipeline: horizontal snap scroll, no page overflow */
+  .qf-pipeline {
+    display: flex;
+    gap: 12px;
+    padding: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .qf-pipeline__col {
+    flex: 0 0 76%;
+    scroll-snap-align: start;
+  }
+
+  /* Booking rows stack */
+  .qf-booking-row {
+    padding: 13px 16px;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .qf-booking-row__right {
+    width: 100%;
+    justify-content: space-between;
+    padding-left: 68px;
+  }
+
+  /* Card chrome */
+  .qf-card-head {
+    padding: 15px 16px;
+  }
+
+  .qf-card-body {
+    padding: 16px;
+  }
+
+  .qf-toolbar {
+    padding: 12px 14px;
+    border-radius: var(--qf-r-lg) var(--qf-r-lg) 0 0;
+  }
+
+  .qf-toolbar__search {
+    flex: 1 1 100%;
+    max-width: none;
+  }
+
+  .qf-toolbar__filters {
+    width: 100%;
+  }
+
+  .qf-toolbar__filters .qf-select {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .qf-toolbar__count {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .qf-table thead th,
+  .qf-table tbody td {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  /* Settings */
+  .qf-settings {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+  }
+
+  .qf-settings__nav {
+    position: static;
+    flex-direction: row;
+    overflow-x: auto;
+    gap: 6px;
+    padding: 8px;
+  }
+
+  .qf-settings__nav-item {
+    white-space: nowrap;
+  }
+
+  .qf-form-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+  }
+
+  /* Modal behaves like a sheet */
+  .qf-overlay {
+    padding: 0;
+    align-items: flex-end;
+  }
+
+  .qf-modal {
+    max-width: none;
+    max-height: 92dvh;
+    border-radius: var(--qf-r-xl) var(--qf-r-xl) 0 0;
+    border-bottom: none;
+    animation: qf-sheet 200ms var(--qf-ease);
+  }
+
+  .qf-modal__head {
+    padding: 18px 18px 14px;
+  }
+
+  .qf-modal__body {
+    padding: 18px;
+  }
+
+  .qf-modal__foot {
+    padding: 14px 18px;
+    padding-bottom: max(14px, env(safe-area-inset-bottom));
+  }
+
+  .qf-modal__foot .qf-btn {
+    flex: 1;
+  }
+
+  .qf-cal {
+    padding: 16px;
+  }
+
+  .qf-cal__day {
+    min-height: 62px;
+    padding: 5px;
+  }
+
+  .qf-cal__grid {
+    gap: 4px;
+  }
+
+  .qf-cal__event {
+    padding: 1px 4px;
+    font-size: 0.5625rem;
+  }
+
+  .qf-booking-grid {
+    padding: 16px;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .qf-insight {
+    padding: 13px 15px;
+  }
+
+  /* Bottom tab bar */
+  .qf-mobile-nav {
+    position: fixed;
+    inset: auto 0 0 0;
+    z-index: 45;
+    display: flex;
+    align-items: stretch;
+    justify-content: space-around;
+    gap: 2px;
+    padding: 6px 6px max(6px, env(safe-area-inset-bottom));
+    background: rgba(255, 253, 250, 0.94);
+    backdrop-filter: saturate(180%) blur(12px);
+    -webkit-backdrop-filter: saturate(180%) blur(12px);
+    border-top: 1px solid var(--qf-border);
+  }
+
+  .qf-mobile-nav__item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    padding: 6px 2px;
+    border-radius: var(--qf-r-md);
+    font-size: 0.625rem;
+    font-weight: 600;
+    color: var(--qf-ink-3);
+    transition: color var(--qf-dur) var(--qf-ease), background-color var(--qf-dur) var(--qf-ease);
+  }
+
+  .qf-mobile-nav__item--active {
+    color: var(--qf-accent-ink);
+    background: var(--qf-accent-tint);
+  }
+}
+
+@keyframes qf-sheet {
+  from {
+    transform: translateY(24px);
+    opacity: 0;
+  }
+}
+
+/* ---------- Small phones ---------- */
+
+@media (max-width: 559px) {
+  h1 {
+    font-size: 1.375rem;
+  }
+
+  .qf-stats {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .qf-stat {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+  }
+
+  .qf-stat__top {
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .qf-stat__foot {
+    flex: none;
+  }
+
+  .qf-pipeline__col {
+    flex-basis: 84%;
+  }
+
+  .qf-page-head__actions .qf-btn {
+    font-size: 0.8125rem;
+  }
+
+  .qf-header__divider {
+    display: none;
+  }
+}

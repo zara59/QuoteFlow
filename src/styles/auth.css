@@ -1,0 +1,386 @@
+/* ============================================================
+   QuoteFlow — auth surfaces
+   Styles for /login, /register, and the full-screen boot loader.
+   Reuses the same tokens as the rest of the app so the sign-in
+   experience feels like part of the product, not a separate app.
+   ============================================================ */
+
+/* ---------- Layout ---------- */
+
+.qf-auth {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: var(--qf-bg);
+}
+
+/* ---------- Left panel ---------- */
+
+.qf-auth__aside {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 40px;
+  padding: 48px 52px;
+  color: #fff;
+  background:
+    radial-gradient(circle at 12% 8%, rgba(255, 107, 69, 0.32), transparent 46%),
+    radial-gradient(circle at 88% 92%, rgba(28, 92, 158, 0.34), transparent 52%),
+    linear-gradient(155deg, #1b2b47 0%, #16233c 52%, #101a2d 100%);
+}
+
+.qf-auth__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  text-decoration: none;
+  align-self: flex-start;
+}
+
+.qf-auth__brand .qf-brand__name {
+  color: #fff;
+}
+
+.qf-auth__brand .qf-brand__tag {
+  color: rgba(255, 255, 255, 0.66);
+}
+
+.qf-auth__pitch {
+  max-width: 30ch;
+}
+
+.qf-auth__headline {
+  margin: 0 0 32px;
+  font-size: clamp(1.75rem, 2.6vw, 2.5rem);
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  color: #fff;
+}
+
+.qf-auth__list {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.qf-auth__list li {
+  padding-left: 18px;
+  border-left: 2px solid rgba(255, 107, 69, 0.85);
+}
+
+.qf-auth__list-title {
+  margin: 0 0 4px;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.qf-auth__list-text {
+  margin: 0;
+  font-size: 0.8438rem;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.74);
+}
+
+.qf-auth__foot {
+  margin: 0;
+  max-width: 40ch;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.58);
+}
+
+/* ---------- Right panel ---------- */
+
+.qf-auth__main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  padding: 48px 32px;
+}
+
+.qf-auth__card {
+  width: 100%;
+  max-width: 424px;
+  padding: 34px 34px 30px;
+}
+
+.qf-auth__head {
+  padding: 0;
+  margin-bottom: 24px;
+}
+
+.qf-auth__title {
+  font-size: 1.4375rem;
+  letter-spacing: -0.02em;
+}
+
+.qf-auth__form {
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+}
+
+.qf-auth__terms {
+  margin: 2px 0 0;
+  font-size: 0.75rem;
+  line-height: 1.55;
+  color: var(--qf-ink-3);
+  text-align: center;
+}
+
+.qf-auth__switch {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--qf-ink-2);
+}
+
+.qf-auth__switch a {
+  color: var(--qf-accent-ink);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.qf-auth__switch a:hover {
+  text-decoration: underline;
+}
+
+/* Brand mark only appears on mobile, where the aside is hidden. */
+.qf-auth__mobile-brand {
+  display: none;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.125rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--qf-ink);
+}
+
+/* ---------- Inline banner ---------- */
+
+.qf-alert {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  padding: 11px 13px;
+  border: 1px solid var(--qf-danger-border);
+  border-radius: var(--qf-r-md);
+  background: var(--qf-danger-tint);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--qf-danger);
+}
+
+.qf-alert svg {
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* ---------- Field helpers ---------- */
+
+.qf-field-hint {
+  margin: 0;
+  font-size: 0.75rem;
+  color: var(--qf-ink-3);
+}
+
+/* Password field: reserve room for the show/hide affordance. */
+.qf-input-wrap--action .qf-input {
+  padding-right: 62px;
+}
+
+.qf-input-wrap__clear {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--qf-ink-3);
+  cursor: pointer;
+  background: none;
+  border: 0;
+}
+
+.qf-input-wrap__clear:hover:not(:disabled) {
+  color: var(--qf-accent-ink);
+}
+
+.qf-input-wrap__clear:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.qf-input--invalid {
+  border-color: var(--qf-danger-border);
+}
+
+.qf-input--invalid:focus {
+  border-color: var(--qf-danger);
+}
+
+/* ---------- Demo account shortcut ---------- */
+
+.qf-auth__demo {
+  margin-top: 4px;
+  padding-top: 18px;
+  border-top: 1px solid var(--qf-border-subtle);
+}
+
+.qf-auth__demo-label {
+  margin: 0 0 9px;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--qf-ink-3);
+}
+
+.qf-auth__demo-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.qf-auth__demo-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 9px 11px;
+  text-align: left;
+  cursor: pointer;
+  background: var(--qf-surface-alt);
+  border: 1px solid var(--qf-border);
+  border-radius: var(--qf-r-sm);
+  transition:
+    border-color var(--qf-dur) var(--qf-ease),
+    background-color var(--qf-dur) var(--qf-ease);
+}
+
+.qf-auth__demo-item:hover:not(:disabled) {
+  background: var(--qf-accent-tint);
+  border-color: var(--qf-accent-border);
+}
+
+.qf-auth__demo-item:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.qf-auth__demo-item b {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--qf-ink);
+}
+
+.qf-auth__demo-item span {
+  font-size: 0.6875rem;
+  line-height: 1.4;
+  color: var(--qf-ink-3);
+}
+
+.qf-auth__demo-note {
+  margin: 9px 0 0;
+  font-size: 0.6875rem;
+  color: var(--qf-ink-3);
+}
+
+/* ---------- Boot loader ---------- */
+
+.qf-boot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: var(--qf-bg);
+}
+
+.qf-brand__mark--lg {
+  width: 46px;
+  height: 46px;
+  border-radius: var(--qf-r-md);
+}
+
+.qf-brand__mark--lg svg {
+  width: 22px;
+  height: 22px;
+}
+
+.qf-boot__spinner {
+  width: 22px;
+  height: 22px;
+  border: 2px solid var(--qf-border-strong);
+  border-top-color: var(--qf-accent);
+  border-radius: 50%;
+  animation: qf-spin 700ms linear infinite;
+}
+
+@keyframes qf-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.qf-boot__text {
+  margin: 0;
+  font-size: 0.8125rem;
+  color: var(--qf-ink-3);
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 960px) {
+  .qf-auth {
+    grid-template-columns: 1fr;
+  }
+
+  .qf-auth__aside {
+    display: none;
+  }
+
+  .qf-auth__mobile-brand {
+    display: flex;
+  }
+}
+
+@media (max-width: 520px) {
+  .qf-auth__main {
+    justify-content: flex-start;
+    padding: 32px 18px;
+  }
+
+  .qf-auth__card {
+    padding: 26px 22px 24px;
+  }
+
+  .qf-auth__demo-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Respect a reduced-motion preference: the spinner still needs to
+   read as "working", so it becomes a slow pulse instead of a spin. */
+@media (prefers-reduced-motion: reduce) {
+  .qf-boot__spinner {
+    animation: qf-pulse 1.4s var(--qf-ease) infinite;
+  }
+
+  @keyframes qf-pulse {
+    0%,
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.45;
+      transform: scale(0.86);
+    }
+  }
+}

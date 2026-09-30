@@ -1,0 +1,192 @@
+/* ---------- Global search results panel ---------- */
+
+.qf-search-panel {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  z-index: 90;
+  max-height: 60vh;
+  overflow-y: auto;
+  background: var(--qf-surface);
+  border: 1px solid var(--qf-border);
+  border-radius: var(--qf-r-md);
+  box-shadow: var(--qf-shadow-lg);
+}
+
+.qf-search-panel__empty {
+  padding: 14px 14px;
+  font-size: 0.8125rem;
+  color: var(--qf-ink-3);
+}
+
+.qf-search-group + .qf-search-group {
+  border-top: 1px solid var(--qf-border);
+}
+
+.qf-search-group__label {
+  padding: 8px 14px 4px;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--qf-ink-4);
+}
+
+.qf-search-hit {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 8px 14px;
+  text-align: left;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+.qf-search-hit:hover,
+.qf-search-hit:focus-visible {
+  background: var(--qf-bg-soft);
+}
+
+.qf-search-hit__icon {
+  display: inline-flex;
+  flex: none;
+  color: var(--qf-ink-4);
+}
+
+.qf-search-hit__body {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  flex: 1;
+}
+
+.qf-search-hit__title {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--qf-ink);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.qf-search-hit__meta {
+  font-size: 0.75rem;
+  color: var(--qf-ink-3);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.qf-search-hit__value {
+  flex: none;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--qf-ink-3);
+  font-variant-numeric: tabular-nums;
+}
+
+.qf-search-panel__foot {
+  padding: 8px 14px;
+  font-size: 0.75rem;
+  color: var(--qf-ink-4);
+  border-top: 1px solid var(--qf-border);
+  background: var(--qf-bg-soft);
+}
+
+/* ---------- Destructive confirm ---------- */
+
+.qf-confirm {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.qf-confirm__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--qf-danger-tint);
+  color: var(--qf-danger);
+}
+
+.qf-confirm__body {
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--qf-ink-2);
+  min-width: 0;
+}
+
+.qf-confirm__body p + p {
+  margin-top: 8px;
+}
+
+.qf-confirm__body b {
+  color: var(--qf-ink);
+}
+
+/* ---------- Toast (visual confirmations) ---------- */
+
+.qf-toast {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 95;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 380px;
+  padding: 13px 18px;
+  background: var(--qf-surface);
+  border: 1px solid var(--qf-border);
+  border-left: 3px solid var(--qf-success);
+  border-radius: var(--qf-r-md);
+  box-shadow: var(--qf-shadow-lg);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--qf-ink);
+  animation: qf-toast-in 180ms var(--qf-ease);
+}
+
+.qf-toast__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--qf-success-tint);
+  color: var(--qf-success);
+}
+
+@keyframes qf-toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+@media (max-width: 1023px) {
+  .qf-toast {
+    right: 16px;
+    left: 16px;
+    bottom: 84px;
+    max-width: none;
+  }
+}
+/* Error tone — a rejected write must not read as a confirmation. */
+.qf-toast--error {
+  border-color: var(--qf-danger-border);
+}
+
+.qf-toast--error .qf-toast__icon {
+  background: var(--qf-danger-tint);
+  color: var(--qf-danger);
+}

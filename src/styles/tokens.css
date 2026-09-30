@@ -1,0 +1,85 @@
+/* ============================================================
+   QuoteFlow — design tokens
+   Warm off-white canvas, deep navy type, coral accent.
+   ============================================================ */
+
+:root {
+  /* Canvas & surfaces */
+  --qf-bg: #faf7f2;
+  --qf-bg-soft: #f4efe7;
+  --qf-surface: #ffffff;
+  --qf-surface-alt: #fcfaf6;
+  --qf-sidebar: #fffdfa;
+
+  /* Ink */
+  --qf-ink: #16233c;
+  --qf-ink-2: #3d4a63;
+  --qf-ink-3: #626d7c;
+  /* Reserved for non-essential decoration only — fails AA for body text. */
+  --qf-ink-4: #7d8798;
+
+  /* Accent — coral */
+  --qf-accent: #ff6b45;
+  --qf-accent-600: #ef5730;
+  --qf-accent-700: #d6441e;
+  /* Coral reserved for TEXT on light surfaces (AA contrast) */
+  --qf-accent-ink: #c03a12;
+  --qf-accent-tint: #fff1ec;
+  --qf-accent-tint-2: #ffe2d9;
+  --qf-accent-border: #ffc9b8;
+
+  /* Semantic status */
+  --qf-success: #14776b;
+  --qf-success-tint: #e6f4f1;
+  --qf-success-border: #b7e0d8;
+
+  --qf-warning: #a1620a;
+  --qf-warning-tint: #fdf3e3;
+  --qf-warning-border: #f0d9ac;
+
+  --qf-danger: #b42318;
+  --qf-danger-tint: #fdecea;
+  --qf-danger-border: #f6ccc6;
+
+  --qf-neutral: #5a6478;
+  --qf-neutral-tint: #f1eee8;
+  --qf-neutral-border: #e2dcd1;
+
+  --qf-info: #1c5c9e;
+  --qf-info-tint: #eaf2fb;
+  --qf-info-border: #c3daf3;
+
+  /* Borders */
+  --qf-border: #ebe4d9;
+  --qf-border-strong: #ded5c7;
+  --qf-border-subtle: #f2ece3;
+
+  /* Shadows — soft, low contrast */
+  --qf-shadow-xs: 0 1px 2px rgba(22, 35, 60, 0.04);
+  --qf-shadow-sm: 0 1px 2px rgba(22, 35, 60, 0.05), 0 1px 3px rgba(22, 35, 60, 0.04);
+  --qf-shadow-md: 0 4px 12px -2px rgba(22, 35, 60, 0.07), 0 2px 4px -2px rgba(22, 35, 60, 0.04);
+  --qf-shadow-lg: 0 16px 40px -12px rgba(22, 35, 60, 0.16), 0 4px 10px -4px rgba(22, 35, 60, 0.06);
+  --qf-shadow-accent: 0 6px 16px -6px rgba(255, 107, 69, 0.45);
+
+  /* Radii */
+  --qf-r-sm: 8px;
+  --qf-r-md: 12px;
+  --qf-r-lg: 16px;
+  --qf-r-xl: 22px;
+  --qf-r-pill: 999px;
+
+  /* Type */
+  --qf-font: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  --qf-font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+
+  /* Layout */
+  --qf-sidebar-w: 252px;
+  --qf-sidebar-w-compact: 76px;
+  --qf-header-h: 72px;
+  --qf-content-max: 1440px;
+
+  /* Motion — minimal */
+  --qf-ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --qf-dur: 140ms;
+}

@@ -1,0 +1,937 @@
+/* ============================================================
+   Components — buttons, cards, badges, forms, tables, overlays
+   ============================================================ */
+
+/* ---------- Card ---------- */
+
+.qf-card {
+  background: var(--qf-surface);
+  border: 1px solid var(--qf-border);
+  border-radius: var(--qf-r-lg);
+  box-shadow: var(--qf-shadow-sm);
+}
+
+.qf-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 22px;
+  border-bottom: 1px solid var(--qf-border-subtle);
+}
+
+.qf-card-title {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.qf-card-sub {
+  font-size: 0.8125rem;
+  color: var(--qf-ink-3);
+  margin-top: 2px;
+}
+
+.qf-card-body {
+  padding: 22px;
+}
+
+.qf-card-body--flush {
+  padding: 0;
+}
+
+/* ---------- Button ---------- */
+
+.qf-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 40px;
+  padding: 0 16px;
+  border-radius: var(--qf-r-md);
+  border: 1px solid transparent;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  transition: background-color var(--qf-dur) var(--qf-ease),
+    border-color var(--qf-dur) var(--qf-ease), color var(--qf-dur) var(--qf-ease),
+    box-shadow var(--qf-dur) var(--qf-ease), transform var(--qf-dur) var(--qf-ease);
+}
+
+.qf-btn:active {
+  transform: translateY(1px);
+}
+
+.qf-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.qf-btn svg {
+  flex: none;
+}
+
+/* Primary — coral. Navy label keeps AA contrast on the light accent. */
+.qf-btn--primary {
+  background: var(--qf-accent);
+  color: var(--qf-ink);
+  box-shadow: var(--qf-shadow-accent);
+}
+
+.qf-btn--primary:hover:not(:disabled) {
+  background: var(--qf-accent-600);
+}
+
+.qf-btn--primary:active:not(:disabled) {
+  background: var(--qf-accent-700);
+  color: #fff;
+}
+
+/* Secondary — white with border */
+.qf-btn--secondary {
+  background: var(--qf-surface);
+  color: var(--qf-ink);
+  border-color: var(--qf-border-strong);
+  box-shadow: var(--qf-shadow-xs);
+}
+
+.qf-btn--secondary:hover:not(:disabled) {
+  background: var(--qf-surface-alt);
+  border-color: var(--qf-ink-4);
+}
+
+/* Ghost */
+.qf-btn--ghost {
+  background: transparent;
+  color: var(--qf-ink-2);
+}
+
+.qf-btn--ghost:hover:not(:disabled) {
+  background: var(--qf-bg-soft);
+  color: var(--qf-ink);
+}
+
+/* Danger ghost */
+.qf-btn--danger {
+  background: transparent;
+  color: var(--qf-danger);
+}
+
+.qf-btn--danger:hover:not(:disabled) {
+  background: var(--qf-danger-tint);
+}
+
+.qf-btn--sm {
+  height: 34px;
+  padding: 0 12px;
+  font-size: 0.8125rem;
+  border-radius: var(--qf-r-sm);
+}
+
+.qf-btn--lg {
+  height: 46px;
+  padding: 0 20px;
+  font-size: 0.9375rem;
+}
+
+.qf-btn--block {
+  width: 100%;
+}
+
+/* Icon button */
+.qf-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: var(--qf-r-md);
+  color: var(--qf-ink-2);
+  border: 1px solid transparent;
+  transition: background-color var(--qf-dur) var(--qf-ease),
+    color var(--qf-dur) var(--qf-ease), border-color var(--qf-dur) var(--qf-ease);
+}
+
+.qf-icon-btn:hover {
+  background: var(--qf-bg-soft);
+  color: var(--qf-ink);
+}
+
+.qf-icon-btn--bordered {
+  background: var(--qf-surface);
+  border-color: var(--qf-border);
+  box-shadow: var(--qf-shadow-xs);
+}
+
+.qf-icon-btn--bordered:hover {
+  border-color: var(--qf-border-strong);
+}
+
+.qf-icon-btn--sm {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--qf-r-sm);
+}
+
+/* ---------- Status badge ---------- */
+
+.qf-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 24px;
+  padding: 0 10px;
+  border-radius: var(--qf-r-pill);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  white-space: nowrap;
+  border: 1px solid transparent;
+}
+
+.qf-badge__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  flex: none;
+}
+
+.qf-badge--success {
+  background: var(--qf-success-tint);
+  color: var(--qf-success);
+  border-color: var(--qf-success-border);
+}
+
+.qf-badge--warning {
+  background: var(--qf-warning-tint);
+  color: var(--qf-warning);
+  border-color: var(--qf-warning-border);
+}
+
+.qf-badge--danger {
+  background: var(--qf-danger-tint);
+  color: var(--qf-danger);
+  border-color: var(--qf-danger-border);
+}
+
+.qf-badge--neutral {
+  background: var(--qf-neutral-tint);
+  color: var(--qf-neutral);
+  border-color: var(--qf-neutral-border);
+}
+
+.qf-badge--info {
+  background: var(--qf-info-tint);
+  color: var(--qf-info);
+  border-color: var(--qf-info-border);
+}
+
+.qf-badge--accent {
+  background: var(--qf-accent-tint);
+  color: var(--qf-accent-ink);
+  border-color: var(--qf-accent-border);
+}
+
+.qf-badge--lg {
+  height: 28px;
+  padding: 0 12px;
+  font-size: 0.8125rem;
+}
+
+/* ---------- Inline status editor ----------
+   Reuses the badge shell so the closed control is pixel-identical
+   to StatusBadge; only the interactive affordance is added.      */
+
+.qf-status-select-wrap {
+  position: relative;
+  padding-right: 6px;
+  cursor: pointer;
+}
+
+.qf-status-select {
+  appearance: none;
+  -webkit-appearance: none;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  color: inherit;
+  font: inherit;
+  font-weight: 600;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.qf-status-select:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.qf-status-select option {
+  color: var(--qf-ink);
+  background: var(--qf-surface);
+}
+
+/* ---------- Avatar ---------- */
+
+.qf-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--qf-r-pill);
+  background: var(--qf-bg-soft);
+  color: var(--qf-ink-2);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  border: 1px solid var(--qf-border);
+  user-select: none;
+}
+
+.qf-avatar--sm {
+  width: 30px;
+  height: 30px;
+  font-size: 0.6875rem;
+}
+
+.qf-avatar--lg {
+  width: 40px;
+  height: 40px;
+  font-size: 0.8125rem;
+}
+
+.qf-avatar--xl {
+  width: 56px;
+  height: 56px;
+  font-size: 1rem;
+}
+
+.qf-avatar--accent {
+  background: var(--qf-accent-tint);
+  color: var(--qf-accent-ink);
+  border-color: var(--qf-accent-border);
+}
+
+.qf-avatar--navy {
+  background: var(--qf-ink);
+  color: #fff;
+  border-color: transparent;
+}
+
+/* ---------- Form controls ---------- */
+
+.qf-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.qf-label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--qf-ink-2);
+  letter-spacing: -0.005em;
+}
+
+/* The accent token is too light for text; --qf-accent-ink is the
+   text-safe variant and keeps the required marker at AA on white. */
+.qf-label__req {
+  color: var(--qf-accent-ink);
+  margin-left: 2px;
+}
+
+.qf-input,
+.qf-select,
+.qf-textarea {
+  width: 100%;
+  min-width: 0;
+  height: 40px;
+  padding: 0 13px;
+  background: var(--qf-surface);
+  border: 1px solid var(--qf-border-strong);
+  border-radius: var(--qf-r-md);
+  font-size: 0.875rem;
+  color: var(--qf-ink);
+  transition: border-color var(--qf-dur) var(--qf-ease),
+    box-shadow var(--qf-dur) var(--qf-ease), background-color var(--qf-dur) var(--qf-ease);
+}
+
+.qf-textarea {
+  height: auto;
+  min-height: 92px;
+  padding: 11px 13px;
+  line-height: 1.55;
+  resize: vertical;
+}
+
+.qf-input::placeholder,
+.qf-textarea::placeholder {
+  color: var(--qf-ink-3);
+}
+
+.qf-input:hover:not(:disabled),
+.qf-select:hover:not(:disabled),
+.qf-textarea:hover:not(:disabled) {
+  border-color: var(--qf-ink-4);
+}
+
+.qf-input:focus,
+.qf-select:focus,
+.qf-textarea:focus {
+  outline: none;
+  border-color: var(--qf-accent-600);
+  box-shadow: 0 0 0 3px var(--qf-accent-tint);
+}
+
+.qf-input[aria-invalid="true"],
+.qf-select[aria-invalid="true"],
+.qf-textarea[aria-invalid="true"] {
+  border-color: var(--qf-danger);
+}
+
+.qf-input[aria-invalid="true"]:focus,
+.qf-select[aria-invalid="true"]:focus {
+  box-shadow: 0 0 0 3px var(--qf-danger-tint);
+}
+
+.qf-select {
+  appearance: none;
+  padding-right: 34px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236b7688' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 11px center;
+  cursor: pointer;
+}
+
+.qf-error {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--qf-danger);
+}
+
+/* Input with leading icon (search) */
+.qf-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  flex: 1;
+}
+
+.qf-input-wrap > svg {
+  position: absolute;
+  left: 12px;
+  color: var(--qf-ink-3);
+  pointer-events: none;
+  transition: color var(--qf-dur) var(--qf-ease);
+}
+
+.qf-input-wrap:focus-within > svg {
+  color: var(--qf-accent-600);
+}
+
+.qf-input-wrap .qf-input {
+  padding-left: 36px;
+}
+
+.qf-input-wrap__clear {
+  position: absolute;
+  right: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: var(--qf-r-sm);
+  color: var(--qf-ink-3);
+  transition: background-color var(--qf-dur) var(--qf-ease), color var(--qf-dur) var(--qf-ease);
+}
+
+.qf-input-wrap__clear:hover {
+  background: var(--qf-bg-soft);
+  color: var(--qf-ink);
+}
+
+/* ---------- Switch ---------- */
+
+.qf-switch {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  flex: none;
+  width: 44px;
+  height: 25px;
+  border-radius: var(--qf-r-pill);
+  background: var(--qf-border-strong);
+  transition: background-color var(--qf-dur) var(--qf-ease);
+}
+
+.qf-switch::after {
+  content: "";
+  position: absolute;
+  left: 3px;
+  width: 19px;
+  height: 19px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: var(--qf-shadow-sm);
+  transition: transform var(--qf-dur) var(--qf-ease);
+}
+
+.qf-switch--on {
+  background: var(--qf-accent);
+}
+
+.qf-switch--on::after {
+  transform: translateX(19px);
+}
+
+.qf-switch-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 16px 0;
+}
+
+.qf-switch-row + .qf-switch-row {
+  border-top: 1px solid var(--qf-border-subtle);
+}
+
+.qf-switch-row__text {
+  min-width: 0;
+}
+
+.qf-switch-row__title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--qf-ink);
+}
+
+.qf-switch-row__desc {
+  font-size: 0.8125rem;
+  color: var(--qf-ink-3);
+  margin-top: 2px;
+}
+
+/* ---------- Segmented control ---------- */
+
+.qf-segment {
+  display: inline-flex;
+  padding: 3px;
+  gap: 2px;
+  background: var(--qf-bg-soft);
+  border: 1px solid var(--qf-border);
+  border-radius: var(--qf-r-md);
+}
+
+.qf-segment__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 32px;
+  padding: 0 13px;
+  border-radius: var(--qf-r-sm);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--qf-ink-3);
+  transition: background-color var(--qf-dur) var(--qf-ease),
+    color var(--qf-dur) var(--qf-ease), box-shadow var(--qf-dur) var(--qf-ease);
+}
+
+.qf-segment__item:hover {
+  color: var(--qf-ink);
+}
+
+.qf-segment__item--active {
+  background: var(--qf-surface);
+  color: var(--qf-ink);
+  box-shadow: var(--qf-shadow-xs);
+}
+
+/* ---------- Table ---------- */
+
+.qf-table {
+  font-size: 0.875rem;
+  min-width: 640px;
+}
+
+.qf-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  padding: 11px 22px;
+  background: var(--qf-surface-alt);
+  border-bottom: 1px solid var(--qf-border);
+  text-align: left;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--qf-ink-3);
+  white-space: nowrap;
+}
+
+.qf-table tbody td {
+  padding: 14px 22px;
+  border-bottom: 1px solid var(--qf-border-subtle);
+  color: var(--qf-ink-2);
+  vertical-align: middle;
+}
+
+.qf-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.qf-table tbody tr {
+  transition: background-color var(--qf-dur) var(--qf-ease);
+}
+
+.qf-table tbody tr:hover td {
+  background: var(--qf-surface-alt);
+}
+
+.qf-table__num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  color: var(--qf-ink);
+}
+
+.qf-table__actions {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.qf-table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Person cell */
+.qf-person {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  min-width: 0;
+}
+
+.qf-person__name {
+  font-weight: 600;
+  color: var(--qf-ink);
+  font-size: 0.875rem;
+}
+
+.qf-person__meta {
+  font-size: 0.75rem;
+  color: var(--qf-ink-3);
+}
+
+/* ---------- Empty state ---------- */
+
+.qf-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 6px;
+  padding: 60px 24px;
+}
+
+.qf-empty__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  margin-bottom: 8px;
+  border-radius: var(--qf-r-lg);
+  background: var(--qf-accent-tint);
+  color: var(--qf-accent-600);
+  border: 1px solid var(--qf-accent-border);
+}
+
+.qf-empty__title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--qf-ink);
+}
+
+.qf-empty__text {
+  font-size: 0.875rem;
+  color: var(--qf-ink-3);
+  max-width: 380px;
+}
+
+.qf-empty__actions {
+  margin-top: 14px;
+}
+
+/* ---------- Modal ---------- */
+
+.qf-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(22, 35, 60, 0.34);
+  animation: qf-fade var(--qf-dur) var(--qf-ease);
+}
+
+.qf-modal {
+  width: 100%;
+  max-width: 560px;
+  max-height: calc(100dvh - 48px);
+  display: flex;
+  flex-direction: column;
+  background: var(--qf-surface);
+  border: 1px solid var(--qf-border);
+  border-radius: var(--qf-r-xl);
+  box-shadow: var(--qf-shadow-lg);
+  animation: qf-pop 180ms var(--qf-ease);
+  overflow: hidden;
+}
+
+.qf-modal--wide {
+  max-width: 760px;
+}
+
+.qf-modal__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 22px 24px 18px;
+  border-bottom: 1px solid var(--qf-border-subtle);
+}
+
+.qf-modal__title {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.qf-modal__sub {
+  font-size: 0.8125rem;
+  color: var(--qf-ink-3);
+  margin-top: 3px;
+}
+
+.qf-modal__body {
+  padding: 22px 24px;
+  overflow-y: auto;
+}
+
+.qf-modal__foot {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 16px 24px;
+  border-top: 1px solid var(--qf-border-subtle);
+  background: var(--qf-surface-alt);
+}
+
+@keyframes qf-fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes qf-pop {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.985);
+  }
+}
+
+/* ---------- Page header ---------- */
+
+.qf-page-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 22px;
+}
+
+.qf-page-head__sub {
+  font-size: 0.875rem;
+  color: var(--qf-ink-3);
+  margin-top: 5px;
+}
+
+.qf-page-head__actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* ---------- Toolbar (search + filters) ---------- */
+
+.qf-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--qf-border-subtle);
+  background: var(--qf-surface);
+  border-radius: var(--qf-r-lg) var(--qf-r-lg) 0 0;
+}
+
+.qf-toolbar__search {
+  flex: 1 1 240px;
+  max-width: 340px;
+}
+
+.qf-toolbar__filters {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.qf-toolbar .qf-select {
+  width: auto;
+  min-width: 140px;
+  height: 40px;
+}
+
+.qf-toolbar__count {
+  font-size: 0.8125rem;
+  color: var(--qf-ink-3);
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+/* ---------- Link ---------- */
+
+.qf-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--qf-accent-ink);
+  transition: color var(--qf-dur) var(--qf-ease), gap var(--qf-dur) var(--qf-ease);
+}
+
+.qf-link:hover {
+  color: var(--qf-accent-ink);
+  gap: 7px;
+}
+
+.qf-link--muted {
+  color: var(--qf-ink-3);
+}
+
+.qf-link--muted:hover {
+  color: var(--qf-ink);
+}
+
+/* ---------- Page state ----------
+   Shared loading / error / empty presentation. A failed load is
+   visually distinct from "no records" so an outage is never mistaken
+   for an empty account. */
+
+.qf-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 56px 24px;
+  text-align: center;
+}
+
+.qf-state__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  margin-bottom: 4px;
+  color: var(--qf-ink-3);
+  background: var(--qf-bg-soft);
+  border-radius: 50%;
+}
+
+.qf-state__icon--danger {
+  color: var(--qf-danger);
+  background: var(--qf-danger-tint);
+}
+
+.qf-state--success .qf-state__icon {
+  color: var(--qf-success);
+  background: var(--qf-success-tint);
+}
+
+.qf-state__title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--qf-ink);
+}
+
+.qf-state__text {
+  margin: 0;
+  max-width: 46ch;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--qf-ink-3);
+}
+
+.qf-state__actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.qf-state--loading {
+  gap: 12px;
+  padding: 72px 24px;
+}
+
+/* ---------- Dashboard greeting ---------- */
+
+.qf-dash-greeting {
+  margin: 0 0 16px;
+  font-size: 1.0625rem;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  color: var(--qf-ink-2);
+}
+
+/* ---------- Form fieldset ----------
+   A disabled <fieldset> switches every control at once while a write
+   is in flight. The reset keeps the grid gap from collapsing. */
+
+.qf-form-fieldset {
+  display: contents;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  min-inline-size: 0;
+}
+
+.qf-form-fieldset:disabled {
+  opacity: 0.65;
+}
